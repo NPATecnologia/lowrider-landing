@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+:root {
+  --bg-void: #050505;
+  --bg-primary: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-surface: #171717;
+  --bg-overlay: #1c1c1c;
+
+  --gold-50: rgba(201, 168, 76, 0.05);
+  --gold-100: rgba(201, 168, 76, 0.12);
+  --gold-200: rgba(201, 168, 76, 0.25);
+  --gold: #c9a84c;
+  --gold-bright: #e2c563;
+  --gold-pale: #e8d48b;
+
+  --text-primary: #f2ede4;
+  --text-secondary: #9a9389;
+  --text-muted: #5c564e;
+  --text-ghost: #3a3632;
+
+  --whatsapp: #25d366;
+  --error: #e85d5d;
+  --success: #5de8a0;
+
+  --border: #1a1a1a;
+  --border-hover: #2a2a2a;
+
+  --font-display: "Oswald", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.333rem;
+  --text-2xl: 1.777rem;
+  --text-3xl: 2.369rem;
+  --text-4xl: 3.157rem;
+  --text-5xl: 4.209rem;
+  --text-hero: clamp(3rem, 8vw, 7rem);
+
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-ultra: 0.2em;
+}
+
+/* ── Tailwind Theme ── */
+@theme {
+  --color-bg-void: #050505;
+  --color-bg-primary: #0a0a0a;
+  --color-bg-elevated: #111111;
+  --color-bg-surface: #171717;
+  --color-bg-overlay: #1c1c1c;
+
+  --color-gold-50: rgba(201, 168, 76, 0.05);
+  --color-gold-100: rgba(201, 168, 76, 0.12);
+  --color-gold-200: rgba(201, 168, 76, 0.25);
+  --color-gold: #c9a84c;
+  --color-gold-bright: #e2c563;
+  --color-gold-pale: #e8d48b;
+
+  --color-text-primary: #f2ede4;
+  --color-text-secondary: #9a9389;
+  --color-text-muted: #5c564e;
+  --color-text-ghost: #3a3632;
+
+  --color-whatsapp: #25d366;
+  --color-border: #1a1a1a;
+  --color-border-hover: #2a2a2a;
+
+  --font-family-display: "Oswald", sans-serif;
+  --font-family-serif: "Cormorant Garamond", serif;
+  --font-family-body: "DM Sans", sans-serif;
+}
+
+/* ── Base Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Noise overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(201, 168, 76, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-200);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ── Typography ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+
+/* ── Utility ── */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Premium layered shadow */
+.shadow-premium {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Gold gradient for buttons */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+}
+
+/* Section padding */
+.section-padding {
+  padding-top: clamp(80px, 10vw, 140px);
+  padding-bottom: clamp(80px, 10vw, 140px);
+}
+
+/* Smooth anchor scrolling handled by Lenis */
+a[href^="#"] {
+  cursor: pointer;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
