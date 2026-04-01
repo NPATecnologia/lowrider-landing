@@ -61,7 +61,7 @@ export default function Hero() {
         </h1>
 
         {/* Slogan subtitle */}
-        <p className="text-text-secondary text-sm sm:text-base tracking-widest uppercase font-display mb-12 opacity-60">
+        <p className="hero-slogan text-text-secondary text-sm sm:text-base tracking-widest uppercase font-display mb-12 opacity-60">
           {BUSINESS.slogan}
         </p>
 
