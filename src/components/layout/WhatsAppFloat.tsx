@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { BUSINESS } from "../../lib/constants";
-import anime from "animejs";
 import gsap from "gsap";
 
 export default function WhatsAppFloat() {
@@ -16,19 +15,6 @@ export default function WhatsAppFloat() {
       delay: 2,
       ease: "back.out(1.7)",
     });
-
-    const interval = setInterval(() => {
-      if (btnRef.current) {
-        anime({
-          targets: btnRef.current,
-          scale: [1, 1.1, 1],
-          duration: 600,
-          easing: "easeInOutQuad",
-        });
-      }
-    }, 4000);
-
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -39,12 +25,13 @@ export default function WhatsAppFloat() {
       rel="noopener noreferrer"
       className="
         fixed bottom-7 right-7 z-50
-        w-15 h-15 rounded-full
+        w-16 h-16 rounded-full
         bg-whatsapp flex items-center justify-center
-        shadow-[0_4px_20px_rgba(37,211,102,0.4)]
-        hover:scale-110 hover:shadow-[0_6px_28px_rgba(37,211,102,0.5)]
-        transition-all duration-300
+        hover:scale-110 active:scale-95
+        transition-transform duration-300
+        cursor-pointer
       "
+      style={{ animation: "glow-pulse 3s ease-in-out infinite" }}
       aria-label="Fale conosco pelo WhatsApp"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="white">

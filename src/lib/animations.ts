@@ -152,7 +152,7 @@ export function badgePulse(element: HTMLElement): void {
   });
 }
 
-export function magneticButton(btn: HTMLElement): void {
+export function magneticButton(btn: HTMLElement): () => void {
   const handleMove = (e: MouseEvent) => {
     const rect = btn.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -160,8 +160,8 @@ export function magneticButton(btn: HTMLElement): void {
 
     anime({
       targets: btn,
-      translateX: x * 0.2,
-      translateY: y * 0.2,
+      translateX: x * 0.15,
+      translateY: y * 0.15,
       duration: 300,
       easing: "easeOutCubic",
     });
@@ -179,6 +179,11 @@ export function magneticButton(btn: HTMLElement): void {
 
   btn.addEventListener("mousemove", handleMove);
   btn.addEventListener("mouseleave", handleLeave);
+
+  return () => {
+    btn.removeEventListener("mousemove", handleMove);
+    btn.removeEventListener("mouseleave", handleLeave);
+  };
 }
 
 export function scrollIndicator(element: HTMLElement): void {

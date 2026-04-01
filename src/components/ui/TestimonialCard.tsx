@@ -14,31 +14,29 @@ export default function TestimonialCard({
   rating,
 }: TestimonialCardProps) {
   return (
-    <div className="testimonial-card bg-bg-surface border border-border rounded-md p-8 transition-all duration-500 hover:border-border-hover hover:-translate-y-1">
+    <div className="testimonial-card glass-card gold-top-line group relative rounded-lg p-8 sm:p-10 transition-all duration-500 hover:-translate-y-1">
       {/* Stars */}
-      <div className="flex gap-1 mb-5">
+      <div className="flex gap-0.5 mb-6">
         {Array.from({ length: rating }).map((_, i) => (
-          <span key={i} className="text-gold text-sm">
-            ★
-          </span>
+          <span key={i} className="text-gold text-base">★</span>
         ))}
       </div>
 
       {/* Quote */}
-      <p className="font-serif italic text-text-secondary text-lg leading-relaxed mb-6">
-        "{text}"
-      </p>
+      <blockquote className="font-serif italic text-text-secondary text-lg sm:text-xl leading-relaxed mb-8">
+        &ldquo;{text}&rdquo;
+      </blockquote>
 
       {/* Author */}
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gold-gradient flex items-center justify-center text-bg-void font-display font-semibold text-sm">
+      <div className="flex items-center gap-4">
+        <div className="w-11 h-11 rounded-full bg-gold-gradient flex items-center justify-center text-bg-void font-display font-bold text-sm shadow-premium">
           {initial}
         </div>
         <div>
-          <span className="block text-text-primary text-sm font-medium">
+          <span className="block text-text-primary text-sm font-medium tracking-wide">
             {name}
           </span>
-          <span className="block text-text-muted text-xs">{vehicle}</span>
+          <span className="block text-text-muted text-xs mt-0.5">{vehicle}</span>
         </div>
       </div>
     </div>

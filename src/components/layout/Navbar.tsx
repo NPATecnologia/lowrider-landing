@@ -8,13 +8,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    gsap.from(".navbar", {
-      opacity: 0,
-      y: -20,
-      duration: 0.8,
-      delay: 1,
-      ease: "power3.out",
-    });
+    gsap.from(".navbar", { opacity: 0, y: -20, duration: 0.8, delay: 1.2, ease: "power3.out" });
   }, []);
 
   useEffect(() => {
@@ -25,64 +19,29 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav
-      className={`
-        navbar fixed top-4 left-1/2 -translate-x-1/2 z-50
-        px-6 py-3 rounded-full
-        backdrop-blur-2xl border border-border
-        transition-all duration-500
-        ${scrolled ? "bg-bg-void/90 shadow-premium" : "bg-bg-primary/80"}
-      `}
-    >
-      <div className="flex items-center gap-8">
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-6">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <button
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm text-text-secondary font-body hover:text-gold hover:bg-gold-50 px-3 py-1.5 rounded-full transition-all duration-300"
-              >
-                {link.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        {/* WhatsApp link */}
-        <a
-          href={BUSINESS.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-flex text-sm font-semibold text-whatsapp hover:brightness-110 transition-all font-body"
-        >
-          WhatsApp
-        </a>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-text-primary p-1"
-          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-        >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-3 bg-bg-overlay/95 backdrop-blur-2xl border border-border rounded-2xl p-6">
-          <ul className="flex flex-col gap-4">
+    <>
+      <nav
+        className={[
+          "navbar fixed top-5 left-1/2 -translate-x-1/2 z-50",
+          "px-2 py-2 rounded-full",
+          "backdrop-blur-2xl border transition-all duration-500",
+          scrolled
+            ? "bg-bg-void/90 border-border shadow-premium"
+            : "bg-bg-primary/60 border-white/[0.03]",
+        ].join(" ")}
+      >
+        <div className="flex items-center">
+          {/* Desktop links */}
+          <ul className="hidden md:flex items-center">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="text-base text-text-secondary hover:text-gold transition-colors font-body w-full text-left"
+                  className="text-sm text-text-secondary font-body hover:text-gold hover:bg-gold-50 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -93,14 +52,49 @@ export default function Navbar() {
                 href={BUSINESS.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base font-semibold text-whatsapp font-body"
+                className="text-sm font-semibold text-whatsapp hover:brightness-110 transition-all font-body px-4 py-2"
               >
                 WhatsApp
               </a>
             </li>
           </ul>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-text-primary p-2 cursor-pointer"
+            aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu — full overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div className="absolute inset-0 bg-bg-void/95 backdrop-blur-2xl" onClick={() => setIsOpen(false)} />
+          <div className="relative z-10 flex flex-col items-center justify-center min-h-dvh gap-8 p-8">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-2xl font-display uppercase tracking-widest text-text-primary hover:text-gold transition-colors cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ))}
+            <a
+              href={BUSINESS.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg font-semibold text-whatsapp font-body mt-4"
+            >
+              WhatsApp →
+            </a>
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
