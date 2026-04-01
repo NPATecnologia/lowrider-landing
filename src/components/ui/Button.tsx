@@ -25,9 +25,9 @@ const variantStyles: Record<Variant, string> = {
 };
 
 const sizeStyles: Record<"sm" | "md" | "lg", string> = {
-  sm: "px-6 py-2.5 text-xs",
-  md: "px-8 py-3 text-sm",
-  lg: "px-10 py-4 text-sm",
+  sm: "px-6 py-2.5 text-xs min-h-11",
+  md: "px-8 py-3 text-sm min-h-12",
+  lg: "px-10 py-4 text-sm min-h-14",
 };
 
 export default function Button(props: ButtonProps) {

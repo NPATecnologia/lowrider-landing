@@ -41,7 +41,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="text-sm text-text-secondary font-body hover:text-gold hover:bg-gold-50 px-4 py-2 rounded-full transition-all duration-300 cursor-pointer"
+                  className="text-sm text-text-secondary font-body hover:text-gold hover:bg-gold-50 px-4 py-2.5 min-h-11 rounded-full transition-all duration-300 cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -52,7 +52,7 @@ export default function Navbar() {
                 href={BUSINESS.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-whatsapp hover:brightness-110 transition-all font-body px-4 py-2"
+                className="text-sm font-semibold text-whatsapp hover:brightness-110 transition-all font-body px-4 py-2.5 min-h-11 inline-flex items-center"
               >
                 WhatsApp
               </a>
@@ -73,7 +73,7 @@ export default function Navbar() {
       {/* Mobile menu — full overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
-          <div className="absolute inset-0 bg-bg-void/95 backdrop-blur-2xl" onClick={() => setIsOpen(false)} />
+          <div className="absolute inset-0 bg-bg-void/95 backdrop-blur-2xl" role="button" aria-label="Fechar menu" tabIndex={0} onClick={() => setIsOpen(false)} onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)} />
           <div className="relative z-10 flex flex-col items-center justify-center min-h-dvh gap-8 p-8">
             {NAV_LINKS.map((link) => (
               <button

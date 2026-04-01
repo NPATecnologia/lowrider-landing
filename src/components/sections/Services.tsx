@@ -46,7 +46,7 @@ export default function Services() {
                   href={`${BUSINESS.whatsappLink}&text=${msg}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="extra-service-chip border border-border rounded-full px-6 py-3 text-sm text-text-secondary font-body hover:border-gold/40 hover:text-gold hover:bg-gold-50 transition-all duration-300 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold"
+                  className="extra-service-chip inline-flex items-center border border-border rounded-full px-6 py-3 min-h-11 text-sm text-text-secondary font-body hover:border-gold/40 hover:text-gold hover:bg-gold-50 transition-all duration-300 cursor-pointer focus-visible:outline-2 focus-visible:outline-gold"
                 >
                   {service}
                 </a>

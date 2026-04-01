@@ -70,7 +70,7 @@ export default function BeforeAfterSlider({ item }: BeforeAfterSliderProps) {
           className="absolute top-0 bottom-0 w-0.5 bg-gold/80 z-10 pointer-events-none"
           style={{ left: `${position}%`, transform: "translateX(-50%)" }}
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gold flex items-center justify-center shadow-premium pointer-events-auto cursor-ew-resize">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-gold flex items-center justify-center shadow-premium pointer-events-auto cursor-ew-resize">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-bg-void">
               <path d="M4 8H12M4 8L6 6M4 8L6 10M12 8L10 6M12 8L10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

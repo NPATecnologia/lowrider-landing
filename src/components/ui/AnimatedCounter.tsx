@@ -48,9 +48,9 @@ export default function AnimatedCounter({
     <div ref={inViewRef} className="stat text-center">
       <span
         ref={numberRef}
-        className="block font-display text-3xl md:text-4xl font-bold text-text-primary tracking-tight"
+        className="block font-display text-3xl md:text-4xl font-bold text-text-primary tracking-tight tabular-nums"
       >
-        0{suffix}
+        {value % 1 === 0 ? Math.floor(value) : value.toFixed(1)}{suffix}
       </span>
       <span className="block text-text-muted text-xs uppercase tracking-widest mt-1 font-display">
         {label}
